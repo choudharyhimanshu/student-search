@@ -4,17 +4,25 @@
 
 from bs4 import BeautifulSoup
 import urllib2
+from pymongo import MongoClient
 
-LIMIT = 10
+ROLL_NO_IN_SINGLE_PAGE = 12
+LIMIT = 7000
 count = 0
+
+client = MongoClient()
+db = client.studentsearch
+collection = db.studentData
 
 while count < LIMIT:
     url = 'http://oa.cc.iitk.ac.in:8181/Oa/Jsp/OAServices/IITk_SrchStudRoll.jsp?recpos='+str(count)+'&selstudrol=&selstuddep=&selstudnam='
     page = urllib2.urlopen(url)
     soup = BeautifulSoup(page.read())
     anchors = soup.find_all('a')
-    for i in range(len(anchors)-1) :
+    for i in range(ROLL_NO_IN_SINGLE_PAGE) :
          roll_no = anchors[i].text.strip()
+         if roll_no == 'PREV' or roll_no == 'NEXT':
+             continue
          student_url = 'http://oa.cc.iitk.ac.in:8181/Oa/Jsp/OAServices/IITk_SrchRes.jsp?typ=stud&numtxt='+roll_no+'&sbm='
          student_page = urllib2.urlopen(student_url)
          student_soup = BeautifulSoup(student_page.read())
@@ -29,7 +37,26 @@ while count < LIMIT:
          department = (student_info[2].text.split(':'))[1].strip()
          hostel = (student_info[3].text.split(':'))[1].strip()
          mail = (student_info[4].text.split(':'))[1].strip()
+         username = (mail.split('@'))[0]
          blood = (student_info[5].text.split(':'))[1].strip()
          gender = ((student_info[6].text.split(':'))[1].split())[0].strip()
 
+         data = {
+            'roll_no' : roll_no,
+            'username' : username,
+            'name' : name,
+            'program' : program,
+            'department' : department,
+            'hostel' : hostel,
+            'mail' : mail,
+            'blood' : blood,
+            'gender' : gender,
+            'photo' : photo
+         }
+
+         print roll_no,name
+         collection.insert_one(data)
+
     count += 12
+
+print "Inserted : ",count
