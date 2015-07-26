@@ -2,6 +2,17 @@
     <h2>Welcome to IITK Student Search</h2>
     <p>You are visitor number <div><a href=''><img src='http://www.hit-counts.com/counter.php?t=MTMyNzIxNw==' border='0' alt='Visitor Counter'></a></div></p>
 </div>
-<div ng-repeat="student in searchResult">
-    
+<div class="row-fluid" ng-show="!jumbo_flag">
+    <h4>Total Results : {{searchResult.stats.total_results}}</h4>
+</div>
+<div class="row text-center" ng-show="!jumbo_flag">
+    <a href="#/profile/{{student.username}}" class="col-sm-3 col-md-2 thumb" ng-repeat="student in searchResult.data">
+        <div class="thumbnail">
+            <div class="thumb-img" style="background-image: url({{student.photo}}), url(img/nopic.gif)"></div>
+            <div class="caption">
+                <p class="thumb-name">{{student.name}}</p>
+                <p>{{student.roll_no}}</p>
+            </div>
+        </div>
+    </a>
 </div>

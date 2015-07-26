@@ -46,10 +46,9 @@ app.directive('searchForm',function($http){
                     department : scope.department,
                     blood : scope.blood
                 };
-                console.log(param);
 
                 $http.post('script/search.php',param).success(function(response){
-                    console.log(response);
+                    scope.$parent.searchResult = response;
                 });
             });
         }

@@ -8,3 +8,26 @@
     background-color: rgb(80, 80, 80);
     color: #fff;
 }
+
+.thumb:hover {
+    text-decoration: none;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.thumb-img {
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #9f9f9f;
+}
+
+.thumb-name {
+    height: 2em;
+    line-height: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}

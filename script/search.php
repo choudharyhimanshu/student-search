@@ -7,6 +7,9 @@
     $result = array();
 
     foreach ($data as $student) {
+        if(sizeof($result) >= 200){
+            break;
+        }
         if ($params['name'] != '') {
 			if(stripos(str_replace('  ', ' ', $student['name']), $params['name']) === false){
                 continue;
@@ -57,8 +60,13 @@
                 continue;
             }
 		}
-        $result[] = $student;
+        $result['data'][] = $student;
     }
+
+    $result['stats'] = array(
+        'total_results' => sizeof($result['data']),
+        'query' => $params
+    );
 
     echo json_encode($result);
 ?>
