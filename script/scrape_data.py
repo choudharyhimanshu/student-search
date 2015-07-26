@@ -8,7 +8,7 @@ from pymongo import MongoClient
 
 ROLL_NO_IN_SINGLE_PAGE = 12
 LIMIT = 7000
-count = 0
+count = 2400
 
 client = MongoClient()
 db = client.studentsearch
@@ -54,8 +54,12 @@ while count < LIMIT:
             'photo' : photo
          }
 
-         print roll_no,name
-         collection.insert_one(data)
+         try :
+             collection.insert_one(data)
+         except :
+             print 'Could not insert ',roll_no,name
+         else :
+             print 'Inserted', roll_no,name
 
     count += 12
 
