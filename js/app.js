@@ -3,8 +3,9 @@ var app = angular.module('student-search',['ngRoute']);
 
 app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider){
     $routeProvider
-        .when('/student/:username',{
-            templateUrl : 'partials/profile.html'
+        .when('/profile/:username',{
+            templateUrl : 'partials/profile.html',
+            controller : 'profileController'
         })
         .otherwise({
             templateUrl : 'partials/welcome.html'
@@ -16,7 +17,19 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     });
 }]);
 
-app.directive('searchForm',function($http){
+app.factory('getUserData',function($http,$q){
+    return {
+        getByUsername : function(username){
+            var deferred = $q.defer();
+            $http.post('script/user_data.php',{username : username}).then(function(data){
+                deferred.resolve(data);
+            });
+            return deferred.promise;
+        }
+    }
+});
+
+app.directive('searchForm',function($http,$timeout){
     return {
         restrict: 'A',
   		scope: false,
@@ -34,6 +47,7 @@ app.directive('searchForm',function($http){
 
             ele.on('change',function(){
                 scope.$parent.jumbo_flag = false;
+                scope.$parent.loader = true;
                 param = {
                     name : scope.name,
                     username : scope.username,
@@ -49,6 +63,9 @@ app.directive('searchForm',function($http){
 
                 $http.post('script/search.php',param).success(function(response){
                     scope.$parent.searchResult = response;
+                    $timeout(function(){
+                        scope.$parent.loader = false;
+                    });
                 });
             });
         }
@@ -58,4 +75,11 @@ app.directive('searchForm',function($http){
 app.controller('appController',function($scope){
     $scope.jumbo_flag = true;
     $scope.searchResult = null;
+    $scope.loader = false;
+});
+
+app.controller('profileController',function($scope,$routeParams,getUserData) {
+    getUserData.getByUsername($routeParams.username).then(function(response){
+        $scope.userData = response.data.data;
+    });
 });

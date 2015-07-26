@@ -1,4 +1,7 @@
 <?php
+
+    $LIMIT = 300;
+
     $params = json_decode(file_get_contents('php://input'), true);
 
     $data = file_get_contents(dirname(dirname(__FILE__)).'/data/student_data.json');
@@ -7,7 +10,7 @@
     $result = array();
 
     foreach ($data as $student) {
-        if(sizeof($result) >= 200){
+        if(sizeof($result['data']) >= $LIMIT){
             break;
         }
         if ($params['name'] != '') {
