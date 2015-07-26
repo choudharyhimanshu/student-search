@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="student-search">
+<html ng-app="student-search" class="full-height">
     <head>
         <meta charset="utf-8">
         <title>Student Search | IITK</title>
@@ -7,18 +7,13 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/my_style.css" rel="stylesheet">
     </head>
-    <body ng-controller="appController">
-        <div class="container-fluid">
-            <div class="col-md-3">
-                <h1> Student Search </h1>
-            </div>
-            <div class="col-md-9" ng-view>
-                
-            </div>
+    <body class="full-height" ng-controller="appController">
+        <div class="container-fluid full-height" style="padding:0px;">
+            <div class="col-md-2 left-panel full-height" ng-include="'partials/menu.html'"></div>
+            <div class="col-md-8 col-md-offset-1" ng-view></div>
         </div>
     </body>
     <script src="js/jquery-1.9.1.js"></script>
-    <!-- // <script src="js/npm.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.js"></script>

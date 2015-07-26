@@ -7,8 +7,8 @@ import urllib2
 from pymongo import MongoClient
 
 ROLL_NO_IN_SINGLE_PAGE = 12
-LIMIT = 7000
-count = 2400
+LIMIT = 10000
+count = 7000
 
 client = MongoClient()
 db = client.studentsearch
@@ -40,6 +40,7 @@ while count < LIMIT:
          username = (mail.split('@'))[0]
          blood = (student_info[5].text.split(':'))[1].strip()
          gender = ((student_info[6].text.split(':'))[1].split())[0].strip()
+         address = (student_info_div.prettify().split("Permanent Address :</b>"))[1].split('<br>')[1].strip()
 
          data = {
             'roll_no' : roll_no,
@@ -51,7 +52,8 @@ while count < LIMIT:
             'mail' : mail,
             'blood' : blood,
             'gender' : gender,
-            'photo' : photo
+            'photo' : photo,
+            'address' : address
          }
 
          try :
