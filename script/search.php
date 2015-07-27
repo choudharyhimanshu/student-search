@@ -2,8 +2,6 @@
 
     $LIMIT = 300;
 
-    $params = json_decode(file_get_contents('php://input'), true);
-
     $params = array(
         'name' => $_GET['name'],
         'username' => $_GET['username'],
