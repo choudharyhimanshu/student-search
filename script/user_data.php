@@ -1,5 +1,7 @@
 <?php
-    $params = json_decode(file_get_contents('php://input'), true);
+    $params = array(
+        'username' => $_GET['username']
+    );
 
     $data = file_get_contents(dirname(dirname(__FILE__)).'/data/student_data.json');
     $data = json_decode($data,true);

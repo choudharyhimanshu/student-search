@@ -4,6 +4,19 @@
 
     $params = json_decode(file_get_contents('php://input'), true);
 
+    $params = array(
+        'name' => $_GET['name'],
+        'username' => $_GET['username'],
+        'roll_no' => $_GET['roll_no'],
+        'address' => $_GET['address'],
+        'gender' => $_GET['gender'],
+        'batch' => $_GET['batch'],
+        'hall' => $_GET['hall'],
+        'program' => $_GET['program'],
+        'department' => $_GET['department'],
+        'blood' => $_GET['blood']
+    );
+
     $data = file_get_contents(dirname(dirname(__FILE__)).'/data/student_data.json');
     $data = json_decode($data,true);
 
@@ -13,22 +26,22 @@
         if(sizeof($result['data']) >= $LIMIT){
             break;
         }
-        if ($params['name'] != '') {
+        if ($params['name'] != 'null') {
 			if(stripos(str_replace('  ', ' ', $student['name']), $params['name']) === false){
                 continue;
             }
 		}
-        if ($params['username'] != '') {
+        if ($params['username'] != 'null') {
 			if(stripos($student['username'], $params['username']) === false){
                 continue;
             }
 		}
-        if ($params['roll_no'] != '') {
+        if ($params['roll_no'] != 'null') {
 			if($student['roll_no'] != $params['roll_no']){
                 continue;
             }
 		}
-        if ($params['address'] != '') {
+        if ($params['address'] != 'null') {
 			if(stripos($student['address'], $params['address']) === false){
                 continue;
             }
