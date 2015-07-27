@@ -1,6 +1,5 @@
 var app = angular.module('student-search',['ngRoute']);
 
-
 app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider){
     $routeProvider
         .when('/profile/:username',{
@@ -72,14 +71,27 @@ app.directive('searchForm',function($http,$timeout){
     }
 });
 
-app.controller('appController',function($scope){
+app.controller('appController',function($scope,$rootScope,$location){
+    $rootScope.og_data = {
+        title : 'Student Search | IITK',
+        description : null,
+        image : null,
+        url : $location.absUrl()
+    };
     $scope.jumbo_flag = true;
     $scope.searchResult = null;
     $scope.loader = false;
 });
 
-app.controller('profileController',function($scope,$routeParams,getUserData) {
+app.controller('profileController',function($scope,$routeParams,$rootScope,getUserData) {
     getUserData.getByUsername($routeParams.username).then(function(response){
         $scope.userData = response.data.data;
+        var descp = 'Roll No. : '+$scope.userData.roll_no+' | Department : '+$scope.userData.department;
+        $rootScope.og_data = {
+            title : $scope.userData.name,
+            description : descp,
+            image : $scope.userData.photo,
+            url : 'http://home.iitk.ac.in/~'+$scope.userData.username
+        };
     });
 });
