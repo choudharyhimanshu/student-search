@@ -15,8 +15,8 @@
         'blood' => $_GET['blood']
     );
 
-    $data = file_get_contents(dirname(dirname(__FILE__)).'/data/student_data.json');
-    $data = json_decode($data,true);
+    $data = file_get_contents(dirname(dirname(__FILE__)).'/data/student_data.bin');
+    $data = unserialize($data);
 
     $result = array();
 
