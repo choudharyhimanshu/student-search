@@ -1,4 +1,12 @@
 <?php
+    
+    // error_reporting(E_ALL);
+    // ini_set('display_errors', 1);
+
+    include 'JSON_library/JSON.php';
+    include 'JSON_library/ReflectionTypeHint.php';
+    include 'JSON_library/UTF8.php';
+    $json = new JSON();
 
     $LIMIT = 300;
 
@@ -15,10 +23,13 @@
         'blood' => $_GET['blood']
     );
 
-    $data = file_get_contents(dirname(dirname(__FILE__)).'/data/student_data.bin');
-    $data = unserialize($data);
+    $data = file_get_contents(dirname(dirname(__FILE__)).'/data/student_data.json');
+    $data = $json->decode($data,true);
 
-    $result = array();
+    $result = array(
+        'data' => array(),
+        'stats' => array()
+    );
 
     foreach ($data as $student) {
         if(sizeof($result['data']) >= $LIMIT){
@@ -82,5 +93,5 @@
         'query' => $params
     );
 
-    echo json_encode($result);
+    echo $json->encode($result);
 ?>
