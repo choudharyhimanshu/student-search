@@ -3,10 +3,8 @@
     // error_reporting(E_ALL);
     // ini_set('display_errors', 1);
 
-    include 'JSON_library/JSON.php';
-    include 'JSON_library/ReflectionTypeHint.php';
-    include 'JSON_library/UTF8.php';
-    $json = new JSON();
+    include 'JSON.php';
+    $json = new Services_JSON();
 
     $LIMIT = 300;
 
@@ -23,8 +21,8 @@
         'blood' => $_GET['blood']
     );
 
-    $data = file_get_contents(dirname(dirname(__FILE__)).'/data/student_data.json');
-    $data = $json->decode($data,true);
+    $data = file_get_contents(dirname(dirname(__FILE__)).'/data/student_data.bin');
+    $data = unserialize($data);
 
     $result = array(
         'data' => array(),

@@ -1,4 +1,8 @@
 <?php
+
+    include 'JSON.php';
+    $json = new Services_JSON();
+
     $params = array(
         'username' => $_GET['username']
     );
@@ -16,5 +20,5 @@
         }
     }
 
-    echo json_encode($result);
+    echo $json->encode($result);
 ?>
