@@ -28,7 +28,7 @@ app.factory('getUserData',function($http,$q){
     }
 });
 
-app.directive('searchForm',function($http,$timeout){
+app.directive('searchForm',function($http,$timeout,$location){
     return {
         restrict: 'A',
   		scope: false,
@@ -50,6 +50,7 @@ app.directive('searchForm',function($http,$timeout){
                 param = 'name='+scope.name+'&username='+scope.username+'&roll_no='+scope.roll_no+'&address='+scope.address+'&gender='+scope.gender+'&batch='+scope.batch+'&hall='+scope.hall+'&program='+scope.program+'&department='+scope.department+'&blood='+scope.blood;
 
                 $http.get('script/search.php?'+param).success(function(response){
+                	$location.path('/welcome');
                     scope.$parent.searchResult = response;
                     $timeout(function(){
                         scope.$parent.loader = false;
