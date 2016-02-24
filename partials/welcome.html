@@ -1,7 +1,7 @@
 <div class="jumbotron" style="background-color:transparent;" ng-show="jumbo_flag">
     <h3 class="alert alert-success alert-dismissible text-center" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        Y15 Updated!!
+        Now you can change your display picture!!. Go to this <a href="http://www.himanshuchoudhary.com/sites/student-search-photo/" target="_blank">link</a> [FIXED] and follow the two simple steps.
     </h3>
     <h2>Welcome to IITK Student Search</h2>
     <p>You are visitor number <div><a href=''><img src='http://www.hit-counts.com/counter.php?t=MTMyNzIxNw==' border='0' alt='Visitor Counter'></a></div></p>
@@ -12,10 +12,10 @@
 <div class="row text-center" ng-show="!jumbo_flag">
     <a ng-href="#/profile/{{student.username}}" target="_blank" class="col-sm-3 col-md-2 thumb" ng-repeat="student in searchResult.data">
         <div class="thumbnail">
-            <div class="thumb-img" style="background-image: url({{student.photo}}), url(img/nopic.gif)"></div>
+            <div class="thumb-img" style="background-image: url(http://himanshuchoudhary.com/sites/student-search-photo/photos/{{student.username}}.jpg), url({{student.photo}}), url(img/nopic.gif)"></div>
             <div class="caption">
-                <p class="thumb-name">{{student.name}}</p>
-                <p>{{student.roll_no}}</p>
+                <p class="thumb-name">{{student.name}}
+                <br/>{{student.roll_no}}</p>
             </div>
         </div>
     </a>

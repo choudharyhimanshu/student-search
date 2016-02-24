@@ -5,8 +5,8 @@
 }
 
 .left-panel {
-    background-color: rgb(80, 80, 80);
-    color: #fff;
+    /*background-color: rgb(80, 80, 80);*/
+    color: #000;
 }
 
 .thumb:hover {
@@ -41,4 +41,11 @@
     z-index: 2;
     opacity: 0.6;
     background-color: white;
+}
+
+.profile-thumb {
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }

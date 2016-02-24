@@ -1,9 +1,7 @@
 <div class="jumbotron" style="background-color:transparent;" ng-show="jumbo_flag">
     <div class="container">
-        <div class="col-md-3 text-center">
-            <img ng-src="{{userData.photo}}" alt="Photo not available" class="img img-thumbnail"/>
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-3 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 profile-thumb" style="background-image: url(http://himanshuchoudhary.com/sites/student-search-photo/photos/{{userData.username}}.jpg), url({{userData.photo}}), url(img/nopic.gif)"></div>
+        <div class="col-md-9 col-sm-12">
             <blockquote>
                 <a href="http://home.iitk.ac.in/~{{userData.username}}"><h2>{{userData.name}}</h2></a>
                 <p><u>Roll No.</u> : {{userData.roll_no}}</p>
