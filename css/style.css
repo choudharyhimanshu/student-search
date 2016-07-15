@@ -1,0 +1,11 @@
+.search-box {
+  /*padding: 20px;*/
+  overflow-y: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
