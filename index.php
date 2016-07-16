@@ -3,22 +3,24 @@
 <head>
 	<title>Student Search | IITK</title>
 
-	<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-red.min.css" />
+	<link rel="stylesheet" href="css/material.indigo-red.min.css" />
 	<link rel="stylesheet" href="css/mdl-selectfield.min.css">
 
 	<link rel="stylesheet" href="css/style.css" />
 
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="fonts/md-icons.css">
+	<link href="fonts/font_roboto.css" rel="stylesheet">
+
+    <script src="js/jquery-1.9.1.js"></script>
+	<script src="js/material.min.js"></script>
+    <script src="js/mdl-selectfield.min.js"></script>
+    <script src="js/script.js"></script>
+
 </head>
 <body>
 	<div class="mdl-grid">
-		<div class="mdl-cell mdl-cell--8-col">
+		<div class="left-panel mdl-cell mdl-cell--8-col">
 			<div class="search-box">
-				<!-- <div class="mdl-cell mdl-cell--12-col text-center">
-					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
-					  <i class="material-icons">keyboard_arrow_up</i>
-					</button>
-				</div> -->
 				<form action="index.php" method="GET" class="mdl-grid">
 				  	<div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				    	<input class="mdl-textfield__input" type="text" id="query" name="query">
@@ -126,15 +128,28 @@
 	  		  		        <label class="mdl-selectfield__label" for="blood">Blood Group</label>
 	  					</div>
 				  	</div>
+				  	<div class="mdl-cell mdl-cell--12-col text-right">
+				  		<button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" onclick="resetFields()">
+				  		    Reset
+				  		</button>
+				  		<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+				  		   Submit
+				  		</button>
+				  	</div>
 				</form>
 			</div>
+			<?php
+				if(isset($_GET['query'])){
+					include 'partials/search.php';
+				}
+				else {
+					include 'partials/welcome.php';
+				}
+			?>
 		</div>
-		<div class="mdl-cell mdl-cell--4-col">
+		<div class="right-panel mdl-cell mdl-cell--4-col">
 			<div class="quick-view"></div>
 		</div>
 	</div>
-
-    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-    <script src="js/mdl-selectfield.min.js"></script>
 </body>
 </html>
