@@ -63,8 +63,10 @@ body {
 
 .profile .photo {
   width: 200px;
-  height: 250px;
-  background-size: contain;
+  height: 200px;
+  border-radius: 100%;
+  background-size: cover;
+  background-color: #fff;
   background-position: center center;
   background-repeat: no-repeat;
   margin: 0px auto 0px auto;

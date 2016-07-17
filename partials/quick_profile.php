@@ -7,7 +7,7 @@
 		die('Invalid Username');
 	}
 
-	$data = file_get_contents('data/data.txt');
+	$data = file_get_contents('../data/data.txt');
 	$data = explode("%%", $data);
 	$size = sizeof($data);
 
@@ -25,7 +25,7 @@
 	if($flag){
 		?>
 			<div class="profile">
-				<div class="photo" style="background-image: url('img/pennysplit.png');"></div>
+				<div class="photo" style="background-image: url('http://himanshuchoudhary.com/sites/student-search-photo/photos/<?php echo $student[0];?>.jpg'), url('http://oa.cc.iitk.ac.in:8181/Oa/Jsp/Photo/<?php echo $student[5];?>_0.jpg')"></div>
 				<h4 class="name"><?php echo $student[1]; ?></h4>
 				<p><b><?php echo $student[0]; ?>@iitk.ac.in</b></p>
 				<p><b><?php echo $student[5]; ?></b></p>
