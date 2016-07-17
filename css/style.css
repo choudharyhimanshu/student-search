@@ -3,23 +3,7 @@ body {
   background-color: #edf1f2;
 }
 
-/*.left-panel {
-  height: 100%;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  overflow: auto;
-}
-
-.right-panel {
-  height: 100%;
-  position: fixed;
-  top: 0px;
-  right: 0px;
-}*/
-
 .search-box {
-  /*padding: 20px;*/
   overflow-y: auto;
 }
 
@@ -40,7 +24,7 @@ body {
   width: 100%;
   height: 256px;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-origin: content-box;
 }
@@ -49,6 +33,9 @@ body {
   padding: 16px;
   background: rgba(0, 0, 0, 0.2);
   cursor: pointer;
+}
+.demo-card-image .mdl-card__menu {
+  color: #fff;
 }
 .demo-card-image__filename {
   color: #fff;

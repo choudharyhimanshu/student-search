@@ -64,8 +64,8 @@
 			}
 			?>
 
-		<div class="mdl-cell mdl-cell--4-col">
-			<div class="demo-card-image mdl-card mdl-shadow--2dp" style="background-image: ;">
+		<div class="mdl-cell mdl-cell--3-col">
+			<div class="demo-card-image mdl-card mdl-shadow--2dp" style="background-image: url('http://himanshuchoudhary.com/sites/student-search-photo/photos/<?php echo $student[0];?>.jpg'), url('http://oa.cc.iitk.ac.in:8181/Oa/Jsp/Photo/<?php echo $student[5];?>_0.jpg');">
 			  <div class="mdl-card__title mdl-card--expand"></div>
 			  <div class="mdl-card__actions" onclick="quickView('<?php echo $student[0];?>')">
 			    <span class="demo-card-image__filename"><?php echo $student[1];?></span>
@@ -103,5 +103,3 @@
 	  document.getElementById('dept').value = "<?php echo $_GET['dept'];?>";
 	  document.getElementById('blood').value = "<?php echo $_GET['blood'];?>";
 </script>
-
-<!-- url('http://himanshuchoudhary.com/sites/student-search-photo/photos/<?php echo $student[0];?>.jpg'), url('http://oa.cc.iitk.ac.in:8181/Oa/Jsp/Photo/<?php echo $student[5];?>_0.jpg')-->

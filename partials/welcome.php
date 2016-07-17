@@ -3,7 +3,7 @@
     <h2 class="mdl-card__title-text">Welcome to IITK Student Search</h2>
   </div>
   <div class="mdl-card__supporting-text">
-    <!-- <p>You are visitor number <div><a href=''><img src='http://www.hit-counts.com/counter.php?t=MTMyNzIxNw==' border='0' alt='Visitor Counter'></a></div></p> -->
+    <p>You are visitor number <div><a href=''><img src='http://www.hit-counts.com/counter.php?t=MTMyNzIxNw==' border='0' alt='Visitor Counter'></a></div></p>
   </div>
   <div class="mdl-card__actions mdl-card--border">
     Developed by

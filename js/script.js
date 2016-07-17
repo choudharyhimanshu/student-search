@@ -23,5 +23,6 @@ function quickView(username){
 	// alert(username);
 	$.get('partials/quick_profile.php?username='+username,function(response){
 		$('.quick-view').html(response);
+		ga('send', 'pageview', 'profile.php?username='+username);
 	});
 }
